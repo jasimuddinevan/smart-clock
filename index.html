@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Analog Clock</title>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center" style="background-color: #D4DFF0;">
+    <div x-data="clock()" x-init="startClock()" class="relative w-80 h-80 rounded-full flex items-center justify-center" style="background-color: #F5F0F6;">
+        <div class="curved-text">
+            <h1 class="font-['Fleur_De_Leah'] text-2xl text-gray-700">Digital watch</h1>
+        </div>
+        <!-- Hour markers -->
+        <div class="absolute w-full h-full">
+            <div class="absolute top-4 left-1/2 -translate-x-1/2 font-bold text-gray-800 text-xl">12</div>
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 font-bold text-gray-800 text-xl">3</div>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 font-bold text-gray-800 text-xl">6</div>
+            <div class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-gray-800 text-xl">9</div>
+        </div>
+
+        <!-- Clock hands -->
+        <div class="relative w-1 h-full">
+            <!-- Hour hand -->
+            <div class="clock-hand hour-hand absolute bottom-1/2 left-1/2 -translate-x-1/2 w-1.5 bg-gray-800 rounded-full"
+                :style="`transform: rotate(${hours * 30 + minutes / 2}deg)`"></div>
+            <!-- Minute hand -->
+            <div class="clock-hand minute-hand absolute bottom-1/2 left-1/2 -translate-x-1/2 w-1 bg-gray-600 rounded-full"
+                :style="`transform: rotate(${minutes * 6}deg)`"></div>
+            <!-- Second hand -->
+            <div class="clock-hand second-hand absolute bottom-1/2 left-1/2 -translate-x-1/2 w-0.5 bg-red-500 rounded-full"
+                :style="`transform: rotate(${seconds * 6}deg)`"></div>
+            <!-- Center dot -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-gray-800 rounded-full"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <footer class="fixed bottom-4 font-['Poiret_One'] text-lg text-gray-600">Developed by <a href="https://www.facebook.com/jasim.uddin" target="_blank">Jasim Uddin</a></footer>
+</body>
+</html>
